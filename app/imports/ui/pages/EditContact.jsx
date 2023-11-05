@@ -6,11 +6,10 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
-import { Stuffs } from '../../api/stuff/Stuff';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Contacts } from '../../api/contact/Contacts';
 
-const bridge = new SimpleSchema2Bridge(Stuffs.schema);
+const bridge = new SimpleSchema2Bridge(Contacts.schema);
 
 /* Renders the EditContact page for editing a single document. */
 const EditContact = () => {
@@ -24,7 +23,7 @@ const EditContact = () => {
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the document
-    const document = Stuffs.collection.findOne(_id);
+    const document = Contacts.collection.findOne(_id);
     return {
       doc: document,
       ready: rdy,
@@ -34,7 +33,7 @@ const EditContact = () => {
   // On successful submit, insert the data.
   const submit = (data) => {
     const { firstName, lastName, address, image, description } = data;
-    Stuffs.collection.update(_id, { $set: { firstName, lastName, address, image, description } }, (error) => (error ?
+    Contacts.collection.update(_id, { $set: { firstName, lastName, address, image, description } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   };
