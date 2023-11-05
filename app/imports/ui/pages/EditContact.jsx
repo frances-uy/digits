@@ -6,11 +6,10 @@ import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useParams } from 'react-router';
-import { Stuffs } from '../../api/stuff/Stuff';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { Contacts } from '../../api/contact/Contacts';
+import { Notes } from '../../api/contact/Notes';
 
-const bridge = new SimpleSchema2Bridge(Stuffs.schema);
+const bridge = new SimpleSchema2Bridge(Notes.schema);
 
 /* Renders the EditContact page for editing a single document. */
 const EditContact = () => {
@@ -20,11 +19,11 @@ const EditContact = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { doc, ready } = useTracker(() => {
     // Get access to Contact documents.
-    const subscription = Meteor.subscribe(Contacts.userPublicationName);
+    const subscription = Meteor.subscribe(Notes.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the document
-    const document = Stuffs.collection.findOne(_id);
+    const document = Notes.collection.findOne(_id);
     return {
       doc: document,
       ready: rdy,
@@ -34,7 +33,7 @@ const EditContact = () => {
   // On successful submit, insert the data.
   const submit = (data) => {
     const { firstName, lastName, address, image, description } = data;
-    Stuffs.collection.update(_id, { $set: { firstName, lastName, address, image, description } }, (error) => (error ?
+    Notes.collection.update(_id, { $set: { firstName, lastName, address, image, description } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   };

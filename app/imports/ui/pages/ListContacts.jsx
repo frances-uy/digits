@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Contact from '../components/Contact';
-import { Contacts } from '../../api/contact/Contacts';
+import { Notes } from '../../api/contact/Notes';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const ListContacts = () => {
@@ -13,11 +13,11 @@ const ListContacts = () => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Contact documents.
-    const subscription = Meteor.subscribe(Contacts.userPublicationName);
+    const subscription = Meteor.subscribe(Notes.userPublicationName);
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Contact documents
-    const contactItems = Contacts.collection.find({}).fetch();
+    const contactItems = Notes.collection.find({}).fetch();
     return {
       contacts: contactItems,
       ready: rdy,
