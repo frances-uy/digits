@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
-import { Contacts } from '../../api/contact/Contacts';
+import { Notes } from '../../api/contact/Notes';
 
 /* eslint-disable no-console */
 
@@ -20,10 +20,10 @@ if (Stuffs.collection.find().count() === 0) {
 
 const addContact = (contact) => {
   console.log(`Adding: ${contact.lastName} (${contact.owner}`);
-  Contacts.collection.insert(contact);
+  Notes.collection.insert(contact);
 };
 
-if (Contacts.collection.find().count() === 0) {
+if (Notes.collection.find().count() === 0) {
   if (Meteor.settings.defaultContacts) {
     console.log('Creating default contacts.');
     Meteor.settings.defaultContacts.forEach(contact => addContact(contact));
