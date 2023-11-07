@@ -1,10 +1,8 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Contacts } from '../../api/contact/Contacts';
 
 /* eslint-disable no-console */
-
-// Initialize the database with a default data document.
+/*
 const addData = (data) => {
   console.log(`  Adding: ${data.name} (${data.owner})`);
   Stuffs.collection.insert(data);
@@ -17,6 +15,7 @@ if (Stuffs.collection.find().count() === 0) {
     Meteor.settings.defaultData.forEach(data => addData(data));
   }
 }
+ */
 
 const addContact = (contact) => {
   console.log(`Adding: ${contact.lastName} (${contact.owner}`);
