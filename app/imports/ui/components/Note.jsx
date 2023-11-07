@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ListGroup from 'react-router-dom';
+import { ListGroup } from 'react-bootstrap';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 const Note = ({ note }) => (
@@ -21,4 +21,5 @@ Note.propTypes = {
   }).isRequired,
 };
 
+console.log(Note);
 export default Note;

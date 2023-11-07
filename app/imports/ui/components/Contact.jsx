@@ -32,7 +32,7 @@ Contact.propTypes = {
     address: PropTypes.string,
     image: PropTypes.string,
     description: PropTypes.string,
-    owner: String,
+    owner: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
   notes: PropTypes.arrayOf(PropTypes.shape({

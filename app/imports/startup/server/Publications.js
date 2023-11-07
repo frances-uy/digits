@@ -14,7 +14,7 @@ Meteor.publish(Contacts.userPublicationName, function () {
 });
 
 Meteor.publish(Contacts.userPublicationName, function () {
-  if (this.userID) {
+  if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Contacts.collection.find({ owner: username });
   }
@@ -22,7 +22,7 @@ Meteor.publish(Contacts.userPublicationName, function () {
 });
 
 Meteor.publish(Notes.userPublicationName, function () {
-  if (this.userID) {
+  if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Notes.collection.find({ owner: username });
   }
